@@ -1,0 +1,114 @@
+$slackAubergine: #4d394b;
+$slackGreen: #2ab27b;
+$slackRed: #e01765;
+
+html { overflow-x: hidden; }
+
+body {
+    margin: 0;
+    background: $slackAubergine url('./background.png') no-repeat;
+    background-size: cover;
+    font-family: Lato, sans-serif;
+    color: white;
+    cursor: default;
+}
+
+.central-block {
+    $height: 500px;
+
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: $height;
+    margin-top: -($height/2);
+    text-align: center;
+
+    h1 {
+        text-shadow: 0 2px 5px rgba(0, 0, 0, .4);
+        margin-bottom: 3rem;
+        font-size: 3.5rem;
+        font-weight: bolder;
+        font-style: italic;
+    }
+
+    form#email-form {
+        input#email {
+            $background: lighten($slackAubergine, 80%);
+
+            position: relative;
+            border: 0;
+            border-radius: 6px 0 0 6px;
+            padding: 15px 20px 15px 20px;
+            outline-style: none;
+            background: transparentize($background, 0.1);
+            font-size: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .4);
+            z-index: 1;
+
+            &:focus { background: $background; }
+        }
+
+        button#send-email {
+            position: relative;
+            padding: 15px 20px 15px 20px;
+            border: 0;
+            border-radius: 0 6px 6px 0;
+            background: $slackGreen;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+            font-size: 2rem;
+            font-weight: bolder!important;
+            color: inherit;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .4);
+        }
+
+        .form-sent-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bolder;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+
+            &:before {
+                display: inline-block;
+                margin-right: 0.4em;
+                padding: 2px 6px 2px 6px;
+                border-radius: 2px;
+                font-size: 0.9em;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+            }
+
+            &#email-success:before {
+                content: 'Welcome!';
+                background-color: $slackGreen;
+            }
+
+            &#email-error:before {
+                content: 'ERROR!';
+                background-color: $slackRed;
+            }
+        }
+    }
+
+    ul#channels-list {
+        display: none;
+        max-width: 680px;
+        margin: 100px auto auto auto;
+        font-size: 1.2em;
+        line-height: 1.4em;
+        padding: 0;
+        font-family: monospace;
+        text-align: justify;
+
+        li {
+            display: inline-block;
+            margin-right: 1em;
+            cursor: help;
+
+            &:before {
+                content: '#';
+                opacity: 0.5;
+            }
+        }
+    }
+}

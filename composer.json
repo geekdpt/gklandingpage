@@ -1,0 +1,25 @@
+{
+    "name": "toverux/geekdpt-landing-page",
+    "description": "A landing page with automatic signup for GeekDpt's Slack Team",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Morgan Touverey Quilling",
+            "email": "mtouverey@methodinthemadness.eu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/toverux/slamp"
+        }
+    ],
+    "require": {
+        "alembic/slamp": "dev-develop",
+        "amphp/aerys": "^0.4.3",
+        "lstrojny/functional-php": "^1.2"
+    }
+}

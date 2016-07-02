@@ -47,6 +47,6 @@ $router->post('/get-invite', function(Request $req, Response $res) use($geekdpt)
 });
 
 (new Host)
-    ->expose('*', 8080)
+    ->expose('127.0.0.1', 8080)
     ->use($router)
     ->use(root(__DIR__.'/web/dist'));

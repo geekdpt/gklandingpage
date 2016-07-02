@@ -5,6 +5,9 @@ use function Aerys\{root, router};
 use Functional as λ;
 use Slamp\SlackObject\Channel;
 
+require __DIR__.'/vendor/autoload.php';
+
+
 function respond(Response $res, $body, int $status = 200) {
     $res->setStatus($status);
     $res->addHeader('Content-Type', 'application/json');
@@ -46,7 +49,21 @@ $router->post('/get-invite', function(Request $req, Response $res) use($geekdpt)
     respond($res, ['err' => null]);
 });
 
-(new Host)
+$host = (new Host)
     ->expose('127.0.0.1', 8080)
     ->use($router)
     ->use(root(__DIR__.'/web/dist'));
+
+Amp\run(function() use($host) {
+    $logger = new class extends Aerys\Logger {
+        protected function output(string $message) {
+            print "$message\n"; // log to stdout
+        }
+    };
+
+    $server = (new Aerys\Bootstrapper(function() use ($host) {
+        return [$host];
+    }))->init($logger, []);
+
+    $server->start();
+});

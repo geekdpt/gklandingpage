@@ -51,6 +51,8 @@ $router->post('/get-invite', function(Request $req, Response $res) use($geekdpt)
 
 $host = (new Host)
     ->expose('127.0.0.1', 8080)
+    ->name('localhost')
+    ->name('geekdpt.io')
     ->use($router)
     ->use(root(__DIR__.'/web/dist'));
 

@@ -4,9 +4,7 @@
   "description": "Web deps of geekdpt-landing-page",
   "scripts": {
     "build": "node node_modules/webpack/bin/webpack.js --inline --colors --progress --display-error-details --display-cached",
-    "watch": "npm run build -- --watch",
-    "server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --colors --progress --display-error-details --display-cached --port 3000 --content-base src",
-    "start": "npm run server"
+    "watch": "npm run build -- --watch"
   },
   "author": "Morgan Touverey Quilling <mtouverey@methodinthemadness.eu>",
   "license": "MIT",

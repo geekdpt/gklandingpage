@@ -8,3 +8,4 @@ composer.phar
 # Web assets
 web/node_modules/
 web/dist/
+npm-debug.log

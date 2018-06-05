@@ -14,11 +14,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/toverux/slamp"
+            "url": "https://github.com/geekdpt/slamp"
         }
     ],
     "require": {
-        "alembic/slamp": "dev-develop",
+        "geekdpt/slamp": "dev-develop",
         "amphp/aerys": "^0.4.3",
         "lstrojny/functional-php": "^1.2"
     }

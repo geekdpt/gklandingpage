@@ -1,0 +1,19 @@
+language: php
+php:
+  - 7.2
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - web/node_modules
+
+before_install:
+    - composer self-update
+    - composer validate --no-check-publish
+
+install:
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - composer install
+  - cd web/
+  - npm install
+  - npm run build

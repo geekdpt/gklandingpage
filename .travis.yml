@@ -16,4 +16,7 @@ install:
   - composer install
   - cd web/
   - npm install
+
+script:
+  - cd web/
   - npm run build

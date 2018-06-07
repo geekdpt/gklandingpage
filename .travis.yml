@@ -34,6 +34,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR automate@soundbox.igotta.beer:/var/www/geekdpt.io
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR automate@backend1.igotta.beer:/var/www/geekdpt.io && killall php && cd /var/www/geekdpt.io/gklandingpage && nohup php server.php &
   on:
     branch: master

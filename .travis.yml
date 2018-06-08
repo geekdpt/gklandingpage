@@ -34,6 +34,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: /bin/bash /var/www/html/geekdpt.io/gklandingpage/deploy/travis_deploy.sh $TRAVIS_BUILD_DIR
+  script: /bin/bash deploy/travis_deploy.sh $TRAVIS_BUILD_DIR
   on:
     branch: master

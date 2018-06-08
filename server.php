@@ -14,8 +14,9 @@ function respond(Response $res, $body, int $status = 200)
     $res->end(json_encode($body));
 }
 
-//TODO encrypt slack token and get it from a file (travis)
-$geekdpt = new Slamp\WebClient(getenv('SLACK_TOKEN'));
+//TODO encrypt slack token and get it from a file (travis) //DONE in theory
+$slack_token = file_get_contents('.token');
+$geekdpt = new Slamp\WebClient(getenv('$slack_token'));
 
 $router = router();
 

@@ -4,7 +4,7 @@ php:
   - 7.2
 
 addons:
-  ssh_known_hosts: soundbox.igotta.beer
+  ssh_known_hosts: back1.igotta.beer
 
 cache:
   directories:
@@ -26,7 +26,7 @@ script:
 
 before_deploy:
   - cd .. && pwd
-  - openssl aes-256-cbc -K $encrypted_5b0d89742976_key -iv $encrypted_5b0d89742976_iv -in deploy_rsa.enc -out /tmp/deploy_rsa -d
+  - openssl aes-256-cbc -K $encrypted_5b0d89742976_key -iv $encrypted_5b0d89742976_iv -in deploy/deploy_rsa.enc -out /tmp/deploy_rsa -d
   - eval "$(ssh-agent -s)"
   - chmod 600 /tmp/deploy_rsa
   - ssh-add /tmp/deploy_rsa
@@ -34,6 +34,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR automate@back1.igotta.beer:/var/www/geekdpt.io && killall php && cd /var/www/geekdpt.io/gklandingpage && nohup php server.php &
+  script: /bin/bash /var/www/html/geekdpt.io/gklandingpage/deploy/travis_deploy.sh $TRAVIS_BUILD_DIR
   on:
     branch: master

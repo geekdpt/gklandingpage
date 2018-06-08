@@ -13,19 +13,13 @@ else
   echo "rsync failed"
   exit 1
 fi
-if killall php; then
+if ssh automate@back1.igotta.beer killall php; then
   echo "all php instances were killed \n Oh you mass murderer..."
 else
   echo "I'm sorry, I couldn't kill them... They have feelings y'know!"
   exit 1
 fi
-if cd /var/www/geekdpt.io/gklandingpage; then
-  echo "I'm in position commander, awaiting orders"
-else
-  echo "I'm the way is obstructe commander, aborting mission"
-  exit 1
-fi
-if screen -d -m php server.php; then
+if ssh automate@back1.igotta.beer cd /var/www/geekdpt.io/gklandingpage && screen -d -m php server.php; then
   echo "Server launched, mission accomplished commander"
   exit 0
 else

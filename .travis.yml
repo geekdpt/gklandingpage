@@ -6,6 +6,9 @@ php:
 addons:
   ssh_known_hosts: back1.igotta.beer
 
+notifications:
+  slack: geekdpt:kvAHyarGjSRHAJXlVNH5SBa4
+
 cache:
   directories:
     - $HOME/.composer/cache
